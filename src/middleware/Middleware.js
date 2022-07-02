@@ -3,7 +3,7 @@ const tokenService = require('../services/TokenService');
 module.exports =
 {
     checkAuth(req, res, next) {
-        console.log(req.headers)
+        console.log(req.headers['authorization'])
         var auth = req.headers['authorization'];
 
         if(!auth){
