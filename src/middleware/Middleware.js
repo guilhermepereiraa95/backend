@@ -3,7 +3,6 @@ const tokenService = require('../services/TokenService');
 module.exports =
 {
     checkAuth(req, res, next) {
-        console.log(req)
         var auth = req.body.token || req.query.token || req.headers['x-access-token'];
 
         if(!auth){
