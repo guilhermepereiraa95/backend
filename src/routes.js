@@ -8,7 +8,7 @@ const SessionController = require('./controllers/SessionController');
 
 const routes = express.Router();
 
-// routes.post('/session', SessionController.login);
+routes.post('/session', SessionController.login);
 routes.post('/session', SessionController.create);
 routes.put('/session/:id', SessionController.update);
 routes.delete('/session/:id', SessionController.delete);
