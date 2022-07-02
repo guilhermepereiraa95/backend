@@ -5,22 +5,22 @@ module.exports = {
   development: {
     client: 'mysql',
     connection: {
-      host : 'localhost',
+      host : 'sql10.freesqldatabase.com',
       port : 3306,
-      user : 'root',
-      // password : 'smokemeat',
-      database : 'smokemeat'
+      user : 'sql10503565',
+      password : 'EHsA4D4vye',
+      database : 'sql10503565'
     }
   },
 
   staging: {
     client: 'mysql',
     connection: {
-      host : 'localhost',
+      host : 'sql10.freesqldatabase.com',
       port : 3306,
-      user : 'root',
-      // password : 'smokemeat',
-      database : 'smokemeat'
+      user : 'sql10503565',
+      password : 'EHsA4D4vye',
+      database : 'sql10503565'
     },
     pool: {
       min: 2,
@@ -34,11 +34,11 @@ module.exports = {
   production: {
     client: 'mysql',
     connection: {
-      host : 'localhost',
+      host : 'sql10.freesqldatabase.com',
       port : 3306,
-      user : 'root',
-      // password : 'smokemeat',
-      database : 'smokemeat'
+      user : 'sql10503565',
+      password : 'EHsA4D4vye',
+      database : 'sql10503565'
     },
     pool: {
       min: 2,
