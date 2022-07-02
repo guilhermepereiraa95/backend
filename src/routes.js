@@ -13,7 +13,7 @@ routes.post('/session', SessionController.create);
 routes.put('/session/:id', SessionController.update);
 routes.delete('/session/:id', SessionController.delete);
 
-routes.get('/pedidos', Middleware.checkAuth, PedidosController.index);
+routes.get('/pedidos', PedidosController.index);
 routes.post('/pedidos', PedidosController.create);
 routes.put('/pedidos/:id', PedidosController.update);
 routes.get('/pedidos/:id', PedidosController.show);
