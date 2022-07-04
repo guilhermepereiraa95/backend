@@ -14,7 +14,7 @@ routes.put('/session/:id', SessionController.update);
 routes.delete('/session/:id', SessionController.delete);
 
 routes.get('/pedidos', 
-// Middleware.checkAuth, 
+Middleware.checkAuth, 
 PedidosController.index);
 
 routes.post('/pedidos', PedidosController.create);
@@ -22,7 +22,9 @@ routes.put('/pedidos/:id', PedidosController.update);
 routes.get('/pedidos/:id', PedidosController.show);
 
 routes.get('/pedido-produto/:id', PedidoProdutoController.show);
-routes.get('/produtos', ProdutosController.index);
+routes.get('/produtos',  
+Middleware.checkAuth,
+ProdutosController.index);
 routes.post('/produtos',  ProdutosController.create);
 routes.get('/produtos/:id', ProdutosController.show);
 routes.put('/produtos/:id', ProdutosController.update);
