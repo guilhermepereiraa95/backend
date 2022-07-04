@@ -13,21 +13,18 @@ routes.post('/session', SessionController.create);
 routes.put('/session/:id', SessionController.update);
 routes.delete('/session/:id', SessionController.delete);
 
-routes.get('/pedidos', 
-Middleware.checkAuth, 
-PedidosController.index);
+routes.get('/pedidos', PedidosController.index);
 
 routes.post('/pedidos', PedidosController.create);
-routes.put('/pedidos/:id', PedidosController.update);
+routes.put('/pedidos/:id', Middleware.checkAuth,  PedidosController.update);
 routes.get('/pedidos/:id', PedidosController.show);
 
 routes.get('/pedido-produto/:id', PedidoProdutoController.show);
-routes.get('/produtos',  
-Middleware.checkAuth,
-ProdutosController.index);
-routes.post('/produtos',  ProdutosController.create);
+
+routes.get('/produtos', ProdutosController.index);
+routes.post('/produtos', Middleware.checkAuth, ProdutosController.create);
 routes.get('/produtos/:id', ProdutosController.show);
-routes.put('/produtos/:id', ProdutosController.update);
-routes.delete('/produtos/:id', ProdutosController.delete);
+routes.put('/produtos/:id', Middleware.checkAuth, ProdutosController.update);
+routes.delete('/produtos/:id', Middleware.checkAuth, ProdutosController.delete);
 
 module.exports = routes;
