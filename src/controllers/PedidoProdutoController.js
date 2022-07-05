@@ -9,12 +9,6 @@ async show(request, response){
     .select('produtos.title', 'produtos.description', 'produtos.value', 'pedido_produto.qtd')    
     .where('pedido_produto.id_pedi', id);
 
-    let total = 0;
-
-    for await (let p of pedido) {
-      total =+ p.value * p.qtd;
-    }
-    
-    return response.json({pedido: pedido, total: total});
+    return response.json(pedido);
   }
 }

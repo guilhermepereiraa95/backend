@@ -9,13 +9,6 @@ module.exports = {
       const pedidos = await connection('pedido')
         .select('*').orderBy('id', 'desc');
 
-      let total = 0;
-
-      for await (let p of pedidos) {
-        total = total + p.value;
-
-      }
-
       return response.json(pedidos);
     } catch (err) {
       response.status(404).send('Erro na conexão');
@@ -68,18 +61,17 @@ module.exports = {
 
       let id_prod;
       let qtd;
-      let total = 0;
+      
       for await (let p of pedido) {
         id_prod = p.id;
         qtd = p.qtd;
-        total =+ p.value * p.qtd;
         await connection('pedido_produto').insert({
           id_prod,
           id_pedi,
           qtd
         })
       }
-      return response.json({ id: id_pedi, total: total });
+      return response.json({ id: id_pedi });
     } catch (err) {
       response.status(404).send('Erro na conexão');
     }
