@@ -68,19 +68,18 @@ module.exports = {
 
       let id_prod;
       let qtd;
-
+      let total = 0;
       for await (let p of pedido) {
         id_prod = p.id;
         qtd = p.qtd;
-
+        total =+ p.value * p.qtd;
         await connection('pedido_produto').insert({
           id_prod,
           id_pedi,
           qtd
         })
       }
-
-      return response.json({ id: id_pedi });
+      return response.json({ id: id_pedi, total: total });
     } catch (err) {
       response.status(404).send('Erro na conexão');
     }

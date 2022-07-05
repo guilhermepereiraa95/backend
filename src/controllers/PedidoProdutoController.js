@@ -12,7 +12,7 @@ async show(request, response){
     let total = 0;
 
     for await (let p of pedido) {
-      total = total + p.value;
+      total =+ p.value * p.qtd;
     }
     
     return response.json({pedido: pedido, total: total});
