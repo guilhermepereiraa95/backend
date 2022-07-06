@@ -6,13 +6,15 @@ const tokenService = require('../services/TokenService');
 module.exports = {
   
   async create(request, response) {
-    const { login, name, password} = request.body;
+    const { login, name, password, email, type} = request.body;
 
     const session = await connection('session').insert(
       {
         login, 
         name,
-        password
+        password,
+        email, 
+        type
       });  
 
     return response.json(

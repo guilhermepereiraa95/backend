@@ -1,7 +1,7 @@
 const crypto = require('crypto');
 const connection = require('../database/connection');
 const ProdutosController = require('./ProdutosController');
-const pusher = require('../services/Pusher');
+const pusher = require('../services/Pusher')
 
 module.exports = {
   async index(request, response) {
@@ -31,6 +31,7 @@ module.exports = {
 
   async create(request, response) {
     try {
+      const d = new Date();
       const { 
         nome, 
         localizacao, 
@@ -38,7 +39,12 @@ module.exports = {
         observacao, 
         pedido, 
         status = 'Pedido aguardando confirmação', 
-        cor = "#a00" } = request.body;
+        cor = "#a00",
+        data = d.toLocaleDateString("pt-BR", {
+          weekday: 'long', year: 'numeric', month: 'long', day: 'numeric'
+        }),
+        hora = d.getHours() + ':' + d.getMinutes()
+      } = request.body;
         
       const [id_pedi] = await connection('pedido').insert({
         nome,
@@ -46,7 +52,9 @@ module.exports = {
         pagamento,
         observacao,
         status,
-        cor
+        cor,
+        data, 
+        hora
       });
 
       pusher.trigger("smokemeat-chanel", "criacao-pedido", {
@@ -61,7 +69,7 @@ module.exports = {
 
       let id_prod;
       let qtd;
-      
+
       for await (let p of pedido) {
         id_prod = p.id;
         qtd = p.qtd;

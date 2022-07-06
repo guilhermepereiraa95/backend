@@ -7,7 +7,8 @@ exports.up = function(knex) {
       table.string('status').notNullable();
       table.string('observacao');
       table.string('cor');
-      
+      table.string('data').notNullable();
+      table.string('hora').notNullable();
     });
   };
   

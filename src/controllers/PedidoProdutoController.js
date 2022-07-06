@@ -2,6 +2,7 @@ const connection = require('../database/connection');
 
 module.exports = {
 async show(request, response){
+  
     const id = request.params.id;
     
     const pedido = await connection('produtos')
