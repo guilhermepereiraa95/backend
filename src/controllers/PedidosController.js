@@ -43,7 +43,7 @@ module.exports = {
         data = d.toLocaleDateString("pt-BR", {
           weekday: 'long', year: 'numeric', month: 'long', day: 'numeric'
         }),
-        hora = d.getHours().toLocaleString('pt-BR') + ':' + d.getMinutes()
+        hora = d.getHours() + ':' + d.getMinutes()
       } = request.body;
         
       const [id_pedi] = await connection('pedido').insert({
