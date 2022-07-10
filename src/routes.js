@@ -21,6 +21,7 @@ routes.get('/pedidos/:id', PedidosController.show);
 
 routes.get('/pedido-produto/:id', PedidoProdutoController.show);
 
+
 routes.get('/produtos', ProdutosController.index);
 routes.post('/produtos', Middleware.checkAuth, ProdutosController.create);
 routes.get('/produtos/:id', ProdutosController.show);
